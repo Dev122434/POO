@@ -47,7 +47,7 @@ class Computadora():
 
 if __name__ == '__main__':
     computadora = Computadora()
-    estado=Computadora.verificar()
+    estado = computadora.verificar()
 
     if estado:
         print('\nLa computadora esta encendida')
