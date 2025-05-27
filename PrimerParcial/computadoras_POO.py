@@ -59,6 +59,28 @@ while True:
         computadora = Computadora()
         computadora.capturar()
         lista_objetos.append(computadora)
+        print('Acciones de la computadora')
+        sub_menu = f'''
+        1. Encender
+        2. Estado
+        3. Apagar
+        '''
+        print(sub_menu)
+        text = 'Ingrese la opcion para la computadora: '
+        sub_opcion = int(input(text))
+        while True:
+            if sub_opcion == 1:
+                computadora.encender()
+                print('Para poder regresar al menu de opciones, debe apagar la computadora')
+            elif sub_opcion == 2:
+                result = 'La computadora esta encendida' if computadora.estado else 'La computadora esta apagada'
+                print(result)
+            else:
+                computadora.apagar()
+                break
+            print(sub_menu)
+            sub_opcion = int(input(text))
+            
     elif opcion == 2:
         print(f'Usted tiene {len(lista_objetos)} objetos')
         index = int(input(f'Ingrese el número de indice del objeto que desea ver (0 - {len(lista_objetos) - 1}): '))
