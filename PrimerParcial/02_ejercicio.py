@@ -1,11 +1,11 @@
 class Computadora():
-    def __init__(self, cantidad_memoria: int, marca: str, procesador: str, velocidad: float, precio: float, almacenamiento: int):
-        self.marca = marca
-        self.procesador = procesador
-        self.precio = precio
-        self.cantidad_memoria = cantidad_memoria
-        self.velocidad = velocidad
-        self.almacenamiento = almacenamiento
+    def __init__(self):
+        self.marca = None
+        self.procesador = 'I9'
+        self.precio = 9500
+        self.cantidad_memoria = 16
+        self.velocidad = 2.8
+        self.almacenamiento = 256
 
     def impresion(self) -> None:
         print('La computadora tiene estas caracteristicas')
@@ -13,8 +13,10 @@ class Computadora():
 
 
 
-computadora1 = Computadora(16, 'HP', 'I9', 2.8, 8500, 256)
-computadora2 = Computadora(8, 'ACER', 'I7', 2.9, 9850, 512)
+computadora1 = Computadora()
+computadora1.marca = 'ACER'
+computadora2 = Computadora()
+computadora2.marca = 'Lenovo'
 
 computadora1.impresion()
 print()
