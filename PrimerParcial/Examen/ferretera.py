@@ -1,6 +1,6 @@
 class Factura():
-    def __init__(self, clave, descripcion, marca, cantidad, precio):
-        self.clave: str = clave
+    def __init__(self, nombre, descripcion, marca, cantidad, precio):
+        self.nombre: str = nombre
         self.descripcion: str = descripcion 
         self.marca: str = marca
         self.cantidad: int = cantidad
@@ -13,7 +13,7 @@ class Factura():
     
     def __str__(self):
         return f'''Informacion De La Factura
-            Clave: {self.clave}
+            Nombre: {self.nombre}
             Descripcion: {self.descripcion}
             Marca: {self.marca}
             Cantidad: {self.cantidad}

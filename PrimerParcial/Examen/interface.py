@@ -6,7 +6,7 @@ def main(page: ft.Page):
     facturas = []
 
     inputs = {
-        "clave": ft.TextField(label="Clave"),
+        "nombre": ft.TextField(label="Nombre"),
         "descripcion": ft.TextField(label="Descripcion"),
         "marca": ft.TextField(label="Marca"),
         "cantidad": ft.TextField(label="Cantidad"),
@@ -21,7 +21,7 @@ def main(page: ft.Page):
 
     def agregar_factura(e):
         factura = Factura(
-            inputs["clave"].value,
+            inputs["nombre"].value,
             inputs["descripcion"].value,
             inputs["marca"].value,
             int(inputs["cantidad"].value),
@@ -60,7 +60,7 @@ def main(page: ft.Page):
             index = int(indice_modificar.value)
             if 0 <= index < len(facturas):
                 factura = facturas[index]
-                inputs["clave"].value = factura.clave
+                inputs["nombre"].value = factura.nombre
                 inputs["descripcion"].value = factura.descripcion
                 inputs["marca"].value = factura.marca
                 inputs["cantidad"].value = factura.cantidad
