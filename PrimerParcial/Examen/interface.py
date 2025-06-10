@@ -10,10 +10,10 @@ def main(page: ft.Page):
         "descripcion": ft.TextField(label="Descripcion"),
         "marca": ft.TextField(label="Marca"),
         "cantidad": ft.TextField(label="Cantidad"),
-        "precio": ft.TextField(label="Precio"),
+        "precio": ft.TextField(label="Precio"),         
     }
 
-    precio_cargado = ft.TextField(label="Precio de la Factura Cargada", visible=False)
+    precio_cargado = ft.TextField(visible=False)
 
     indice_modificar = ft.TextField(label="Índice de la Factura a Modificar (0-n)")
 
