@@ -1,27 +1,25 @@
 class Persona():
-    def __init__(self, name, last_name, age, estado_civil, tipo):
+    def __init__(self, name, last_name, age, estado_civil, genero):
         self.name = name
         self.last_name = last_name
         self.age = age
         self.estado_civil = estado_civil
-        self.tipo = tipo
+        self.genero = genero
 
     def __str__(self):
-        return f'''
-Tipo: {type(self).__name__}
-Nombre: {self.name}
+        return f'''Nombre: {self.name}
 Apellidos: {self.last_name}
 Edad: {self.age}
 Estado Civil: {self.estado_civil}
-Tipo: {self.tipo}
+Genero: {self.genero}
 '''
 
 
 class Doctor(Persona):
-    def __init__(self, name, last_name, age, estado_civil, tipo,
+    def __init__(self, name, last_name, age, estado_civil, genero,
                  especialidad, area_estudio, grado, anios_experiencia
                  ):
-        super().__init__(name, last_name, age, estado_civil, tipo)
+        super().__init__(name, last_name, age, estado_civil, genero)
         self.especialidad = especialidad
         self.area_estudio = area_estudio
         self.grado = grado
@@ -35,9 +33,9 @@ Años De Experiencia: {self.anios_experiencia}
 '''
 
 class Ingeniero(Persona):
-    def __init__(self, name, last_name, age, estado_civil, tipo,
+    def __init__(self, name, last_name, age, estado_civil, genero,
                  area, herramientas, especialidad, proyectos):
-        super().__init__(name, last_name, age, estado_civil, tipo)
+        super().__init__(name, last_name, age, estado_civil, genero)
         self.area = area
         self.herramientas = herramientas
         self.especialidad = especialidad
@@ -51,9 +49,9 @@ Proyectos: {self.proyectos}
 '''
 
 class Licenciado(Persona):
-    def __init__(self, name, last_name, age, estado_civil, tipo,
+    def __init__(self, name, last_name, age, estado_civil, genero,
                  despacho, especialidad, area, num_registro):
-        super().__init__(name, last_name, age, estado_civil, tipo)
+        super().__init__(name, last_name, age, estado_civil, genero)
         self.despacho = despacho
         self.especialidad = especialidad
         self.area = area
