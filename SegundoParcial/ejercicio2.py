@@ -1,3 +1,7 @@
+import os
+
+os.system('cls')
+
 class Empleado():
     def __init__(self, rfc, name, paterno, materno, fecha_ingreso):
         self.rfc = rfc
@@ -19,9 +23,9 @@ class Contratado(Empleado):
     def __init__(self, rfc, name, paterno, materno, fecha_ingreso, sueldo, anios_laborando):
         super().__init__(rfc, name, paterno, materno, fecha_ingreso)
         self.sueldo = sueldo
-        self.porcentaje = 0
-        self.sueldo_final = 0.0
         self.anios_laborando = anios_laborando
+        self.porcentaje = 0.0
+        self.sueldo_final = 0.0
 
     def calcular_sueldo(self):
         if (self.anios_laborando < 4):
@@ -54,3 +58,14 @@ class Destajo(Empleado):
         return f'''{super().__str__()}Numero De Clientes: {self.num_clientes}
 Sueldo: {self.sueldo_final}
 '''
+    
+contratado = Contratado('XYZ123456ABCD', 'Ana', 'López', 'Martínez', '01/05/2020', 28000.50, 4)
+destajo = Destajo("ABCD123456XYZ", 'Luis', 'Gómez', 'Ramírez', '10/01/2022', 15)
+
+print('\n----------------')
+print('Objeto Contratado')
+contratado.calcular_sueldo()
+print(contratado)
+print('\n----------------')
+print('Objeto Destajo')
+print(destajo)
