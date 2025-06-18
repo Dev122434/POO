@@ -1,25 +1,23 @@
 class Empleado():
-    def __init__(self, rfc, name, paterno, materno, ingreso):
+    def __init__(self, rfc, name, paterno, materno, fecha_ingreso):
         self.rfc = rfc
         self.name = name
         self.paterno = paterno
         self.materno = materno
-        self.ingreso = ingreso
+        self.fecha_ingreso = fecha_ingreso
 
-    def calcular_sueldo(self):
-        pass
     def __str__(self):
         return f'''Nombre: {self.name}
 Apellido Paterno: {self.paterno}
 Apellido Materno: {self.materno}
-Fecha De Ingreso: {self.ingreso}
+Fecha De Ingreso: {self.fecha_ingreso}
 '''
     
 
 
 class Contratado(Empleado):
-    def __init__(self, rfc, name, paterno, materno, ingreso, sueldo, anios_laborando):
-        super().__init__(rfc, name, paterno, materno, ingreso)
+    def __init__(self, rfc, name, paterno, materno, fecha_ingreso, sueldo, anios_laborando):
+        super().__init__(rfc, name, paterno, materno, fecha_ingreso)
         self.sueldo = sueldo
         self.porcentaje = 0
         self.sueldo_final = 0.0
@@ -46,22 +44,13 @@ Sueldo Final: {self.sueldo_final}
 
 
 class Destajo(Empleado):
-    def __init__(self, rfc, name, paterno, materno, ingreso, num_clientes):
-        super().__init__(rfc, name, paterno, materno, ingreso)
+    def __init__(self, rfc, name, paterno, materno, fecha_ingreso, num_clientes):
+        super().__init__(rfc, name, paterno, materno, fecha_ingreso)
         self.num_clientes = num_clientes
-        self.monto = 150
-        self.sueldo_final = 0
-
-    def calcular_sueldo(self):
-        self.sueldo_final = self.monto * self.num_clientes
+        self.sueldo_final = self.num_clientes * 150
 
     
     def __str__(self):
         return f'''{super().__str__()}Numero De Clientes: {self.num_clientes}
 Sueldo: {self.sueldo_final}
 '''
-    
-
-#contratado = Contratado()
-destajo = Destajo("asasas", 'SCSCSC', 'SAQDADAD', 'ADADAD', '02/12/2025', 5)
-print(destajo)
