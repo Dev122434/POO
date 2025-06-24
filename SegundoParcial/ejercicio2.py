@@ -11,7 +11,8 @@ class Empleado():
         self.fecha_ingreso = fecha_ingreso
 
     def __str__(self):
-        return f'''Nombre: {self.name}
+        return f'''RFC: {self.rfc}
+Nombre: {self.name}
 Apellido Paterno: {self.paterno}
 Apellido Materno: {self.materno}
 Fecha De Ingreso: {self.fecha_ingreso}
@@ -59,13 +60,26 @@ class Destajo(Empleado):
 Sueldo: {self.sueldo_final}
 '''
     
-contratado = Contratado('XYZ123456ABCD', 'Ana', 'López', 'Martínez', '01/05/2020', 28000.50, 4)
-destajo = Destajo("ABCD123456XYZ", 'Luis', 'Gómez', 'Ramírez', '10/01/2022', 15)
 
 print('\n----------------')
 print('Objeto Contratado')
+rfc = input('Ingrese su RFC: ')
+nombre = input('Ingrese su nombre: ')
+paterno = input('Ingrese su apellido paterno: ')
+materno = input('Ingrese su apellido materno: ')
+fecha_ingreso = input('Ingrese su fecha de ingreso: ')
+sueldo = float(input('Ingrese su sueldo: '))
+anios = int(input('Ingrese sus años de experiencia: '))
+contratado = Contratado(rfc, nombre, paterno, materno, fecha_ingreso, sueldo, anios)
 contratado.calcular_sueldo()
-print(contratado)
+print(f'\n{contratado}')
 print('\n----------------')
 print('Objeto Destajo')
-print(destajo)
+rfc_destajo = input('Ingrese su RFC: ')
+nombre_destajo = input('Ingrese su nombre: ')
+paterno_destajo = input('Ingrese su apellido paterno: ')
+materno_destajo = input('Ingrese su apellido materno: ')
+fecha_ingreso_destajo = input('Ingrese su fecha de ingreso: ')
+num_clientes_destajo = int(input('Ingrese su número de clientes: '))
+destajo = Destajo(rfc_destajo, nombre_destajo, paterno_destajo, materno_destajo, fecha_ingreso_destajo, num_clientes_destajo)
+print(f'\n{destajo}')
