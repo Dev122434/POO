@@ -26,7 +26,7 @@ class Pastor_Aleman(Perros):
 class Doberman(Chihuahua, Pastor_Aleman):
     def ladrar(self, veces):
         for i in range(veces):
-            super(Doberman, self).ladrar()
+            print('\tDoberman ladra: guau guau guau guau')
 
 pastor = Pastor_Aleman()
 print('\nPerror Pastor Aleman: ')
