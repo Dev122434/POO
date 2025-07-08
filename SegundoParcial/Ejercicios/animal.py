@@ -4,3 +4,12 @@ class Animal():
         self.alimentacion = alimentacion
         self.habitat = habitat
         self.nombre = nombre
+
+
+    def __str__(self):
+        return f'''
+Edad: {self.edad}
+Alimentacion {self.alimentacion}
+Habitat {self.habitat}
+Nombre: {self.nombre}
+'''
