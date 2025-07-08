@@ -1,5 +1,9 @@
+import os
+os.system("cls")
+import flet as ft
+
 class Palindromo:
-    def __init__(self, cadena):
+    def _init_(self, cadena):
         self.cadena = cadena
 
     def convertir_a_lista(self):

@@ -1,5 +1,3 @@
-from animal import Animal
-
 class Mamifero():
     def __init__(self, peso, estatura, temperatura_corporal, tipo_pelo):
         self.peso = peso

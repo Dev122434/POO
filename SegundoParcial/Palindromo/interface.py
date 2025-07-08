@@ -1,69 +1,65 @@
 import flet as ft
 from palindromo import Palindromo
 
-palindromo: Palindromo
-
 def main(page: ft.Page):
-    page.title = "Palindromo"
+    page.title = "Verificador de Palíndromos"
+    resultado = ft.Text("")
+    lista1_text = ft.Text("")
+    lista2_text = ft.Text("")
+    lista3_text = ft.Text("")
+    tabla = ft.DataTable(
+        columns=[
+            ft.DataColumn(ft.Text("Indice")),
+            ft.DataColumn(ft.Text("Lista 2")),
+            ft.DataColumn(ft.Text("Lista 3")),
+            ft.DataColumn(ft.Text("¿Iguales?")),
+        ],
+        rows=[]
+    )
 
+    def verificar_palindromo(e):
+        cadena = input_box.value
+        obj = Palindromo(cadena)
+        lista1 = obj.convertir_a_lista()
+        lista2 = obj.eliminar_espacios_de_cadena()
+        lista3 = obj.eliminar_espacios_y_voltear_lista(lista1)
+        res = obj.es_palindromo(lista3)
+        
+        lista1_text.value = f"Lista 1: {lista1}"
+        lista2_text.value = f"Lista 2: {[(i, c) for i, c in enumerate(lista2)]}"
+        lista3_text.value = f"Lista 3: {[(i, c) for i, c in enumerate(lista3)]}"
+        resultado.value = f"Resultado: {res}"
 
-    inputs = {
-        "frase": ft.TextField(label="Frase"),
-    }
-
-    precio_cargado = ft.TextField(visible=False)
-
-
-    output = ft.Text("")
-
-    def agregar_cadena(e):
-        global palindromo
-        palindromo = Palindromo(inputs["frase"].value,)
-        output.value = f'El objeto fue creado con la frase {palindromo}'
+        # Construir la tabla de comparación
+        tabla.rows.clear()
+        max_len = max(len(lista2), len(lista3))
+        for i in range(max_len):
+            letra2 = lista2[i] if i < len(lista2) else ""
+            letra3 = lista3[i] if i < len(lista3) else ""
+            iguales = "✅" if letra2 == letra3 else "❌"
+            tabla.rows.append(
+                ft.DataRow(
+                    cells=[
+                        ft.DataCell(ft.Text(str(i))),
+                        ft.DataCell(ft.Text(letra2)),
+                        ft.DataCell(ft.Text(letra3)),
+                        ft.DataCell(ft.Text(iguales)),
+                    ]
+                )
+            )
         page.update()
 
-    def limpiar_campos(e):
-        for v in inputs.values():
-            v.value = ""
-        output.value = ""
-        page.update()
-
-    def eliminar_espacios(e):
-        output.value = f'Resultado de eliminar los espacios {palindromo.eliminar_espacios()}'
-        page.update()
-
-    def convertir_lista(e):
-        output.value = f'La frase fue convertida a lista: {palindromo.convertir_lista()}'
-        page.update()
-
-    def is_palindromo(e):
-        list_frase = palindromo.convertir_lista()
-        copy_lista = palindromo.reverse_frase()
-        if len(list_frase) == len(copy_lista):
-            for i in range(len(list_frase)):
-                if (list_frase[i] == copy_lista[i]):
-                    output.value = f'lista1[{i}] = lista2[{i}]'
-                else:
-                    output.value = f'lista1[{i}] != lista2[{i}]'
-                    break
-            output.value = palindromo.is_palindromo()
-            page.update()
-        else:
-            output.value = f'{palindromo.is_palindromo()}'
-        page.update()
-
-    btn_agregar = ft.ElevatedButton("Agregar Frase", on_click=agregar_cadena)
-    btn_convertir_lista = ft.ElevatedButton("Convertir Frase A Una Lista", on_click=convertir_lista)
-    btn_eliminar = ft.ElevatedButton("Eliminar Espacios", on_click=eliminar_espacios)
-    btn_limpiar = ft.ElevatedButton("Limpiar Campos", on_click=limpiar_campos)
-    btn_palindromo = ft.ElevatedButton('Es palindromo', on_click=is_palindromo)
+    input_box = ft.TextField(label="Ingresa una palabra o frase", width=400)
+    btn = ft.ElevatedButton("Verificar", on_click=verificar_palindromo)
 
     page.add(
-        *inputs.values(),
-        precio_cargado,
-        btn_agregar,
-        ft.Row([btn_convertir_lista, btn_eliminar, btn_limpiar, btn_palindromo], spacing=10),
-        output
+        input_box,
+        btn,
+        lista1_text,
+        lista2_text,
+        lista3_text,
+        resultado,
+        tabla
     )
 
 ft.app(target=main)
