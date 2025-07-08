@@ -1,13 +1,23 @@
 import flet as ft
-from mamifero import Mamifero
+from animal import Animal
+from gato import Gato
 from caballo import Caballo
+from perro import Perro
 
-def caballo():
+def caballo(edad, alimentacion, habitat, nombre, peso, estatura, temperatura_corporal, tipo_pelo, color_pelo, raza, personalidad):
     caballo = Caballo(edad, alimentacion, habitat, nombre, peso, estatura, temperatura_corporal, tipo_pelo, raza, color_pelo, personalidad)
-    return caballo
+    generar_boton()
+
+def perro(edad, alimentacion, habitat, nombre, peso, estatura, temperatura_corporal, tipo_pelo, color, raza, nivel_estres):
+    perro = Perro(edad, alimentacion, habitat, nombre, peso, estatura, temperatura_corporal, tipo_pelo, raza, color, nivel_estres)
+    generar_boton()
+
+def gato(edad, alimentacion, habitat, nombre, peso, estatura, temperatura_corporal, tipo_pelo, color, raza, numero_vidas):
+    gato = Gato(edad, alimentacion, habitat, nombre, peso, estatura, temperatura_corporal, tipo_pelo, color, raza, numero_vidas)
+    generar_boton()
 
 def generar_boton(e):
-    return ft.ElevatedButton('Generar Caballo',on_click=caballo)
+    return ft.ElevatedButton('Generar Caballo',on_click=generar_boton)
 
 def campos_texto(selected_animal: str):
     nombre = ft.TextField(label="Nombre del mamífero")
@@ -33,7 +43,7 @@ def campos_texto(selected_animal: str):
         raza = ft.TextField(label="Raza")
         color = ft.TextField(label="Color")
         personalidad = ft.TextField(label="Personalidad", visible=True)
-        boton = ft.ElevatedButton('Generar Caballo', on_click=generar_caballo)
+        boton = ft.ElevatedButton('Generar Caballo', on_click=None)
         return nombre, edad, alimentacion, habitat, peso, estatura, temperatura, tipo_pelo, raza, color, personalidad
 
 def main(page: ft.Page):
